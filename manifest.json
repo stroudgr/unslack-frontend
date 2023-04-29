@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Unslack",
+  "version": "0.1",
+  "permissions": [
+    "storage", 
+    "alarms",
+    "idle",
+    "tabs"],
+  "background": {
+    "scripts": ["./node_modules/jquery/dist/jquery.min.js", 
+      "config.js", "sites.js", "tracker.js", "background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["./node_modules/jquery/dist/jquery.min.js", "background.js"]
+    }
+  ],
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self';",
+  "browser_action": {
+    "default_icon": "./images/icon.png",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "icons": { "19": "images/icon32.png", "38": "images/icon64.png",
+             "128": "images/icon.png" }
+  
+}

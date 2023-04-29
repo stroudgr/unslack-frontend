@@ -1,0 +1,98 @@
+<!--<app-room-detail></app-room-detail>-->
+<!--
+<br/>
+<mat-card style="width: 50%;">
+  <mat-card-header><h2>Slackers in Room Name</h2></mat-card-header>
+  <mat-card-content>
+    <div>-->
+
+      <!--Show the slacker scores that belong in the specified Room-->
+      <!--<mat-nav-list class="slackers">
+        <div *ngFor="let slacker of room.">
+          <div class="slackers">
+            <mat-list-item *ngFor="let room of rooms">
+              <a matLine routerLink="/detail/{{slacker.id}}">
+                <span class="badge">{{slacker.id}}</span> {{slacker.name}}
+              </a>
+            </mat-list-item>
+          </div>
+
+        </div>
+      </mat-nav-list>
+    </div>
+
+
+    <app-slacker-detail [slacker]="selectedSlacker"></app-slacker-detail>
+</mat-card-content>
+</mat-card>-->
+
+<!--<div *ngIf="selectedSlacker">
+
+  <h2>{{ selectedSlacker.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{selectedSlacker.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedSlacker.name" placeholder="name">
+    </label>
+  </div>
+
+</div> //-->
+
+<!-- Example code for displaying 1 slacker
+
+<h2>{{ slacker1.name | uppercase }} Details</h2>
+<div><span>id: </span>{{slacker1.id}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="slacker1.name" placeholder="name">
+  </label>
+</div>
+//-->
+
+<mat-card style="width: 20%; float: left;">
+
+  <div style="display:table ">
+  <div style="display: table-row">
+
+      <div style="width: 40%; display: table-cell;">
+        <mat-list class="rooms">
+          <mat-list-item *ngFor="let room of rooms"
+            [class.selected]="room === selectedRoom"
+            (click)="onSelect(room)">
+            <span class="badge"></span> {{room.name}}
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <!--
+      <div style="display: table-cell;">
+        <div *ngIf="selectedRoom">
+
+          <h2>{{ selectedRoom.name | uppercase }} Details</h2>
+          <div><span>id: </span>{{selectedRoom.id}}</div>
+          <div>
+              <label>name:
+                <input [(ngModel)]="selectedRoom.name" placeholder="name">
+              </label>
+          </div>
+          <app-leaderboard style="width: 70%" [room]="selectedRoom.id"> </app-leaderboard>
+        </div>
+      </div>-->
+  </div>
+  </div>
+</mat-card>
+
+<mat-card style="width: 60%; float: left;">
+  <div>
+    <div *ngIf="selectedRoom">
+
+      <h2>{{ selectedRoom.name | uppercase }} Details</h2>
+      <div><span>id: </span>{{selectedRoom.id}}</div>
+      <div>
+          <mat-list-item>name:
+            <input [(ngModel)]="selectedRoom.name" placeholder="name">
+          </mat-list-item>
+      </div>
+      <app-leaderboard style="width: 100%" [room]="selectedRoom.id"> </app-leaderboard>
+    </div>
+  </div>
+</mat-card>

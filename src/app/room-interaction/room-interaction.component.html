@@ -1,0 +1,158 @@
+<br/>
+<section class="mat-typography">
+  <mat-card class="options-card">
+    <mat-card-header>
+      <h2>Options</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-accordion class="options-headers-align">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+              <mat-panel-title>
+                Create
+              </mat-panel-title>
+              <mat-panel-description>
+                Start a new room
+              </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput
+            [(ngModel)]="createRoomNameField"
+            placeholder="Room name"></mat-form-field>
+          <br/>
+          <mat-form-field>
+            <input matInput
+            [(ngModel)]="createRoomUserNameField"
+            placeholder="Your Username in this Room">
+          </mat-form-field>
+          <br/>
+          <button mat-raised-button (click)="create()">CREATE A ROOM</button>
+          <div *ngIf="errorMsgCreate !== ''">
+            <br/>
+            <h4 class="error-msg">{{errorMsgCreate}}</h4>
+          </div>
+          <div *ngIf="successMsgCreate !== ''">
+            <br/>
+            <h4>{{successMsgCreate}}</h4>
+          </div>
+          <div id="welcomeDiv"  style="display:none;" class="answer_list">
+            <br/>
+            <p>Your new room id: {{createdRoomId}}</p>
+            <!--> this is where the id from the room is supposed to be injected <-->
+          </div>
+          <br/>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+              <mat-panel-title>
+                Join
+              </mat-panel-title>
+              <mat-panel-description>
+                Join an existing room
+              </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput
+            [(ngModel)]="joinRoomIDField"
+            placeholder="Room ID Hash">
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+              <input matInput
+              [(ngModel)]="joinRoomUserNameField"
+              placeholder="Your Username in this Room">
+          </mat-form-field>
+          <br/>
+          <button mat-raised-button (click)="join()">JOIN A ROOM</button>
+          <br/>
+          <div *ngIf="errorMsgJoin !== ''">
+            <br/>
+            <h4 class="error-msg">{{errorMsgJoin}}</h4>
+          </div>
+          <div *ngIf="successMsgJoin !== ''">
+            <br/>
+            <h4>{{successMsgJoin}}</h4>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+              <mat-panel-title>
+                Room Settings
+              </mat-panel-title>
+              <mat-panel-description>
+                Update blacklisted websites in an existing room
+              </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+              <input matInput
+              [(ngModel)]="changeRoomSettingsIDField"
+              placeholder="Room ID">
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <input matInput
+            [(ngModel)]="changeRoomAddBlacklistField"
+            placeholder="Blacklist www.youtube.com , ...">
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <input matInput
+            [(ngModel)]="changeRoomRemoveBlacklistField"
+            placeholder="Remove from blacklist www.facebook.com , ...">
+          </mat-form-field>
+          <br/>
+          <button mat-raised-button (click)="changeRoomSettings()">CHANGE ROOM SETTINGS</button>
+          <br/>
+          <div *ngIf="errorMsgChangeRoomSettings !== ''">
+            <br/>
+            <h4 class="error-msg">{{errorMsgChangeRoomSettings}}</h4>
+          </div>
+          <div *ngIf="successMsgChangeRoomSettings !== ''">
+            <br/>
+            <h4>{{successMsgChangeRoomSettings}}</h4>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+  </mat-card>
+
+
+  <!-- TABLE -->
+
+  <mat-card class="table-card">
+    <mat-card-header>
+      <h2 style="float:left">Your Rooms</h2>
+      <button mat-raised-button class="sync-button" (click)="sync()">Sync</button>
+    </mat-card-header>
+    
+    <mat-card-content class="room-table-content">
+      <mat-accordion style="width: 100%" *ngFor="let room of rooms">
+        <mat-expansion-panel style="width: 100%" (opened)="panelOpenState = true"
+                            (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{room.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+              Room ID: {{room.id}} 
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          Blacklist: {{room.blacklist}} <br/>
+          Members: {{room.member_ids}} <br/> <br/>
+
+          <app-leaderboard style="width: 100%" [room]="room.id"> </app-leaderboard>
+
+
+          <!--app-charts
+            chartType="bar"
+            chartTitle="Member To Score"
+            [chartData]="room.scores"
+            [xAxis]="room.member_ids">
+          </app-charts-->
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+  </mat-card>
+</section>

@@ -1,0 +1,46 @@
+<!--div>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+</div-->
+
+<!--div>
+  <mat-table [dataSource]="dataSource"-->
+
+    <!-- Search doesn't work for this-->
+    <!--ng-container matColumnDef="rank">
+      <mat-header-cell *matHeaderCellDef> Rank  </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.rank}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.slacker.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="score">
+      <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.slacker.score}} </mat-cell>
+    </ng-container-->
+
+    <!--ng-container matColumnDef="rank">
+      <mat-header-cell *matHeaderCellDef> Rank  </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.rank}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="score">
+      <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.score}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div-->
+
+<app-table [columns]="columns" [dataSource]="dataSource"> </app-table>

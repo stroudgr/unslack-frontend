@@ -1,0 +1,8 @@
+<br/>
+<mat-card-content>
+
+    <div *ngIf="columns">
+      <app-table [columns]="columns" [dataSource]="slackersRooms"></app-table>
+    </div>
+
+</mat-card-content>

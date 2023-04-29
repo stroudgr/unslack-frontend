@@ -1,0 +1,73 @@
+<br/>
+<!--<div *ngIf="slackerData && slackerChartType" style="float:left">-->
+  <div *ngIf="trackerData && slackerChartType" style="float:left">
+    <!--<app-charts chartType="pie" [chartData]="slackerData"></app-charts >-->
+      <app-charts
+        chartType="bar"
+        chartTitle="Web Browsing Activity"
+        subTitle=""
+        [chartData]="trackerData"
+        [xAxis]="websiteNames">
+      </app-charts>
+
+
+</div>
+
+
+<!--<mat-card-content>
+
+    <div *ngIf="columns">
+      <app-table [columns]="columns" [dataSource]="webStats"></app-table>
+    </div>
+
+</mat-card-content>
+-->
+  <!--<ul class="slackers">-->
+    <!--<li *ngFor="let slacker of slackers"
+    [class.selected]="slacker === selectedSlacker"
+    (click)="onSelect(slacker)">-->
+    <!--<li *ngFor="let slacker of slackers">
+      <a routerLink="/detail/{{slacker.id}}">
+        <span class="badge">{{slacker.id}}</span> {{slacker.name}}
+      </a>
+    </li>
+  </ul>-->
+
+  <!--
+  <mat-card-content>
+    <div>
+      <mat-nav-list class="slackers">
+        <mat-list-item *ngFor="let slacker of slackers">
+          <a matLine routerLink="/detail/{{slacker.id}}">
+            <span class="badge">{{slacker.id}}</span> {{slacker.name}}
+          </a>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+
+
+    <app-slacker-detail [slacker]="selectedSlacker"></app-slacker-detail>
+</mat-card-content>
+</mat-card>-->
+<!--<div *ngIf="selectedSlacker">
+
+  <h2>{{ selectedSlacker.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{selectedSlacker.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedSlacker.name" placeholder="name">
+    </label>
+  </div>
+
+</div> //-->
+
+<!-- Example code for displaying 1 slacker
+
+<h2>{{ slacker1.name | uppercase }} Details</h2>
+<div><span>id: </span>{{slacker1.id}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="slacker1.name" placeholder="name">
+  </label>
+</div>
+//-->
